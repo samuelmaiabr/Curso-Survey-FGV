@@ -1,0 +1,46 @@
+---
+title: "Cálculo da amostra aleatória simples"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+```{r}
+# Carregar pacote
+library(tidyverse)
+```
+
+-   Fórmula para cálculo da amostragem quando não temos a população - aula 30/07/2020
+
+## Função para calcular a amostra:
+
+```{r}
+calculo_amostra_aleatoria_simples <-
+  function(margem_erro, z, p = 0.5) {
+    me <- margem_erro / 100
+    
+    n <- (z ^ 2) * p * (1 - p) / (me ^ 2)
+    
+    round(n)
+  }
+
+```
+
+## Uma tabela para ajudar a decidir
+
+```{r}
+lst(erro_margem = c(5, 3, 1), confianca_nivel = c(90, 95, 99)) %>%
+  cross_df() %>%
+  mutate(z = case_when(confianca_nivel == 90 ~ 1.645,
+                       confianca_nivel == 95 ~ 1.96,
+                       confianca_nivel == 99 ~ 2.575)) %>% 
+  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z))
+```
