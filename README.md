@@ -5,4 +5,4 @@
 (em andamento)
 
 
-[Amostra](amostra.html)
+[Amostra](https://beatrizmilz.github.io/Curso-Survey-FGV/amostra.html)

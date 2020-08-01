@@ -1,0 +1,71 @@
+---
+title: "Trabalho final:  Informação sobre o Coronavírus"
+subtitle: "[Curso Survey: Como são feitas as pesquisas de opinião pública no Brasil](https://cpdoc.fgv.br/curso-survey) "
+institute: ""
+author: "Docente: Jimmy Medeiros - CPDOC - FGV/RJ <br><br> Discentes: Beatriz Milz, Ivan Ramalho, Lucas ???, Pedro Vitorino, Samuel Maia "
+date: "Agosto, 2020"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r setup, include=FALSE}
+library(kableExtra)
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#04324c",
+  inverse_background_color = "#066395",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono"),
+)
+
+```
+
+## Amostragem
+
+- Margem de erro:
+- Nível de confiança:
+- n - tamanho amostral:
+
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse) # Carregar pacote utilizado
+```
+
+```{r}
+calculo_amostra_aleatoria_simples <-
+  function(margem_erro, z, p = 0.5) {
+    me <- margem_erro / 100
+    n <- (z ^ 2) * p * (1 - p) / (me ^ 2)
+    round(n)
+  }
+
+```
+
+---
+
+```{r}
+lst(erro_margem = c(5, 3, 1), confianca_nivel = c(90, 95, 99)) %>%
+  cross_df() %>%
+  mutate(z = case_when(confianca_nivel == 90 ~ 1.645,
+                       confianca_nivel == 95 ~ 1.96,
+                       confianca_nivel == 99 ~ 2.575)) %>% 
+  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %>% 
+  select(-z) %>%  knitr::kable() %>% 
+  row_spec(4, bold = T, color = "black") %>% 
+  kable_styling(bootstrap_options = "striped", full_width = TRUE)
+```
