@@ -3,7 +3,7 @@
   <head>
     <title>Trabalho final: Informação sobre o Coronavírus</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Docente: Jimmy Medeiros - CPDOC - FGV/RJ    Discentes: Beatriz Milz, Ivan Ramalho, Lucas ???, Pedro Vitorino, Samuel Maia" />
+    <meta name="author" content="Docente: Jimmy Medeiros - CPDOC - FGV/RJ    Discentes: Beatriz Milz, Ivan Ramalho, Lucas Lemos, Pedro Vitorino, Samuel Maia" />
     <script src="libs/header-attrs-2.3/header-attrs.js"></script>
     <script src="libs/kePrint-0.0.1/kePrint.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # Trabalho final: Informação sobre o Coronavírus
 ## <a href="https://cpdoc.fgv.br/curso-survey">Curso Survey: Como são feitas as pesquisas de opinião pública no Brasil</a>
-### Docente: Jimmy Medeiros - CPDOC - FGV/RJ <br><br> Discentes: Beatriz Milz, Ivan Ramalho, Lucas ???, Pedro Vitorino, Samuel Maia
+### Docente: Jimmy Medeiros - CPDOC - FGV/RJ <br><br> Discentes: Beatriz Milz, Ivan Ramalho, Lucas Lemos, Pedro Vitorino, Samuel Maia
 ### Agosto, 2020
 
 ---
@@ -23,18 +23,14 @@ class: center, middle, inverse, title-slide
 
 
 
-## Amostragem
-
-- Margem de erro:
-- Nível de confiança:
-- n - tamanho amostral:
-
----
 
 
-```r
-library(tidyverse) # Carregar pacote utilizado
-```
+
+
+
+## Nota metodológica
+
+### Desenho amostral
 
 
 ```r
@@ -46,27 +42,38 @@ calculo_amostra_aleatoria_simples &lt;-
   }
 ```
 
+
+```r
+tabela_amostra &lt;-
+  lst(erro_margem = c(5, 3, 1),
+      confianca_nivel = c(90, 95, 99)) %&gt;%
+  cross_df() %&gt;%
+  mutate(z = case_when(
+      confianca_nivel == 90 ~ 1.645,
+      confianca_nivel == 95 ~ 1.96,
+      confianca_nivel == 99 ~ 2.575)) %&gt;%
+  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %&gt;% 
+  select(-z) 
+```
+
 ---
 
 
 ```r
-lst(erro_margem = c(5, 3, 1), confianca_nivel = c(90, 95, 99)) %&gt;%
-  cross_df() %&gt;%
-  mutate(z = case_when(confianca_nivel == 90 ~ 1.645,
-                       confianca_nivel == 95 ~ 1.96,
-                       confianca_nivel == 99 ~ 2.575)) %&gt;% 
-  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %&gt;% 
-  select(-z) %&gt;%  knitr::kable() %&gt;% 
-  row_spec(4, bold = T, color = "black") %&gt;% 
+tabela_amostra %&gt;%
+  knitr::kable(col.names = c("Margem de erro (%)", 
+                             "Nível de confiança (%)",
+                             "Amostra (n)")) %&gt;%
+  row_spec(4, bold = T, color = "black") %&gt;%
   kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 
 &lt;table class="table table-striped" style="margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; erro_margem &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; confianca_nivel &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Margem de erro (%) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Nível de confiança (%) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Amostra (n) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -117,6 +124,55 @@ lst(erro_margem = c(5, 3, 1), confianca_nivel = c(90, 95, 99)) %&gt;%
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+---
+## Nota metodológica
+
+- Margem de erro:
+
+- Nível de confiança:
+
+- n - tamanho amostral:
+
+Período de coleta: xxxx
+
+Recrutamento: onde divulgamos?
+
+Plataforma de questionário utilizada: 
+
+&lt;img src="img/qualtrics_logo.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+## Análise dos dados
+
+- `R`  e `RStudio`:
+
+&lt;img src="img/rstudio-r.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+- Pacotes do `tidyverse` :
+
+&lt;img src="img/hex-tidyverse.png" width="25%" style="display: block; margin: auto;" /&gt;
+
+---
+## Resultados
+
+xxx
+
+---
+## Referências
+
+
+R Core Team (2020). _R: A Language and Environment for Statistical
+Computing_. R Foundation for Statistical Computing. Vienna, Austria.
+URL: [https://www.R-project.org/](https://www.R-project.org/).
+
+RStudio Team (2020). _RStudio: Integrated Development Environment for
+R_. RStudio, PBC. Boston, MA. URL:
+[http://www.rstudio.com/](http://www.rstudio.com/).
+
+Wickham, H, M. Averick, J. Bryan, et al. (2019). "Welcome to the
+tidyverse". In: _Journal of Open Source Software_ 4.43, p. 1686. DOI:
+[10.21105/joss.01686](https://doi.org/10.21105%2Fjoss.01686).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

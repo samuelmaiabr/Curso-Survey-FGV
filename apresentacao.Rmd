@@ -2,7 +2,7 @@
 title: "Trabalho final:  Informação sobre o Coronavírus"
 subtitle: "[Curso Survey: Como são feitas as pesquisas de opinião pública no Brasil](https://cpdoc.fgv.br/curso-survey) "
 institute: ""
-author: "Docente: Jimmy Medeiros - CPDOC - FGV/RJ <br><br> Discentes: Beatriz Milz, Ivan Ramalho, Lucas ???, Pedro Vitorino, Samuel Maia "
+author: "Docente: Jimmy Medeiros - CPDOC - FGV/RJ <br><br> Discentes: Beatriz Milz, Ivan Ramalho, Lucas Lemos, Pedro Vitorino, Samuel Maia"
 date: "Agosto, 2020"
 output:
   xaringan::moon_reader:
@@ -13,17 +13,24 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
+
 ```{r setup, include=FALSE}
-library(kableExtra)
 knitr::opts_chunk$set(
 	echo = TRUE,
 	message = FALSE,
-	warning = FALSE
+	warning = FALSE,
+	fig.align = "center"
 )
 ```
 
-```{r xaringan-themer, include=FALSE, warning=FALSE}
+```{r pacotes, message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse) 
+library(kableExtra)
 library(xaringanthemer)
+library(RefManageR)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
 style_mono_accent(
   base_color = "#04324c",
   inverse_background_color = "#066395",
@@ -34,17 +41,20 @@ style_mono_accent(
 
 ```
 
-## Amostragem
-
-- Margem de erro:
-- Nível de confiança:
-- n - tamanho amostral:
-
----
-
-```{r message=FALSE, warning=FALSE}
-library(tidyverse) # Carregar pacote utilizado
+```{r, load_refs, include=FALSE, cache=FALSE}
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           max.names = 3,
+           hyperlink = FALSE,
+           dashed = TRUE)
+myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 ```
+
+## Nota metodológica
+
+### Desenho amostral
 
 ```{r}
 calculo_amostra_aleatoria_simples <-
@@ -53,19 +63,75 @@ calculo_amostra_aleatoria_simples <-
     n <- (z ^ 2) * p * (1 - p) / (me ^ 2)
     round(n)
   }
+```
 
+```{r}
+tabela_amostra <-
+  lst(erro_margem = c(5, 3, 1),
+      confianca_nivel = c(90, 95, 99)) %>%
+  cross_df() %>%
+  mutate(z = case_when(
+      confianca_nivel == 90 ~ 1.645,
+      confianca_nivel == 95 ~ 1.96,
+      confianca_nivel == 99 ~ 2.575)) %>%
+  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %>% 
+  select(-z) 
 ```
 
 ---
 
 ```{r}
-lst(erro_margem = c(5, 3, 1), confianca_nivel = c(90, 95, 99)) %>%
-  cross_df() %>%
-  mutate(z = case_when(confianca_nivel == 90 ~ 1.645,
-                       confianca_nivel == 95 ~ 1.96,
-                       confianca_nivel == 99 ~ 2.575)) %>% 
-  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %>% 
-  select(-z) %>%  knitr::kable() %>% 
-  row_spec(4, bold = T, color = "black") %>% 
+tabela_amostra %>%
+  knitr::kable(col.names = c("Margem de erro (%)", 
+                             "Nível de confiança (%)",
+                             "Amostra (n)")) %>%
+  row_spec(4, bold = T, color = "black") %>%
   kable_styling(bootstrap_options = "striped", full_width = TRUE)
+```
+
+---
+## Nota metodológica
+
+- Margem de erro:
+
+- Nível de confiança:
+
+- n - tamanho amostral:
+
+Período de coleta: xxxx
+
+Recrutamento: onde divulgamos?
+
+Plataforma de questionário utilizada: 
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/qualtrics_logo.jpg")
+```
+
+---
+## Análise dos dados
+
+- `R` `r NoCite(myBib, c("R-Core", "RStudio"))` e `RStudio`:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/rstudio-r.jpg")
+```
+
+- Pacotes do `tidyverse` `r NoCite(myBib, "tidyverse")`:
+
+```{r echo=FALSE, out.width="25%"}
+knitr::include_graphics("img/hex-tidyverse.png")
+```
+
+---
+## Resultados
+
+xxx
+
+---
+## Referências
+
+
+```{r refs, echo=FALSE, results="asis"}
+PrintBibliography(myBib)
 ```
