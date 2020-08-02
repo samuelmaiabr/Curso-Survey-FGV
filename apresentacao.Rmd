@@ -109,6 +109,16 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 ```
 
 ---
+class: middle
+
+# Exemplo da plataforma
+
+## Qualtrics
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/foto-survey.jfif")
+```
+---
 ## Análise dos dados
 
 - `R` `r NoCite(myBib, c("R-Core", "RStudio"))` e `RStudio`:
