@@ -1491,6 +1491,15 @@ window.onload = function() {
   PagedTableDoc.initAll();
 };
 </script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -1651,7 +1660,8 @@ summary {
 
 
 <pre class="r"><code># Carregar pacote
-library(tidyverse)</code></pre>
+library(tidyverse)
+library(kableExtra)</code></pre>
 <ul>
 <li>Fórmula para cálculo da amostragem quando não temos a população - aula 30/07/2020</li>
 </ul>
@@ -1660,25 +1670,142 @@ library(tidyverse)</code></pre>
 <pre class="r"><code>calculo_amostra_aleatoria_simples &lt;-
   function(margem_erro, z, p = 0.5) {
     me &lt;- margem_erro / 100
-    
     n &lt;- (z ^ 2) * p * (1 - p) / (me ^ 2)
-    
     round(n)
   }</code></pre>
 </div>
 <div id="uma-tabela-para-ajudar-a-decidir" class="section level2">
 <h2>Uma tabela para ajudar a decidir</h2>
-<pre class="r"><code>lst(erro_margem = c(5, 3, 1), confianca_nivel = c(90, 95, 99)) %&gt;%
+<pre class="r"><code>lst(erro_margem = c(5, 3, 1),
+      confianca_nivel = c(90, 95, 99)) %&gt;%
   cross_df() %&gt;%
-  mutate(z = case_when(confianca_nivel == 90 ~ 1.645,
-                       confianca_nivel == 95 ~ 1.96,
-                       confianca_nivel == 99 ~ 2.575)) %&gt;% 
-  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z))</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["erro_margem"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["confianca_nivel"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["z"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"5","2":"90","3":"1.645","4":"271"},{"1":"3","2":"90","3":"1.645","4":"752"},{"1":"1","2":"90","3":"1.645","4":"6765"},{"1":"5","2":"95","3":"1.960","4":"384"},{"1":"3","2":"95","3":"1.960","4":"1067"},{"1":"1","2":"95","3":"1.960","4":"9604"},{"1":"5","2":"99","3":"2.575","4":"663"},{"1":"3","2":"99","3":"2.575","4":"1842"},{"1":"1","2":"99","3":"2.575","4":"16577"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+  mutate(z = case_when(
+      confianca_nivel == 90 ~ 1.645,
+      confianca_nivel == 95 ~ 1.96,
+      confianca_nivel == 99 ~ 2.575)) %&gt;%
+  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %&gt;% 
+  select(-z)  %&gt;%
+  knitr::kable(col.names = c(&quot;Margem de erro (%)&quot;, 
+                             &quot;Nível de confiança (%)&quot;,
+                             &quot;Amostra (n)&quot;)) %&gt;%
+  row_spec(4, bold = T, color = &quot;black&quot;) %&gt;%
+  kable_styling(bootstrap_options = &quot;striped&quot;, full_width = TRUE)</code></pre>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Margem de erro (%)
+</th>
+<th style="text-align:right;">
+Nível de confiança (%)
+</th>
+<th style="text-align:right;">
+Amostra (n)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+271
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+752
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+6765
+</td>
+</tr>
+<tr>
+<td style="text-align:right;font-weight: bold;color: black !important;">
+5
+</td>
+<td style="text-align:right;font-weight: bold;color: black !important;">
+95
+</td>
+<td style="text-align:right;font-weight: bold;color: black !important;">
+384
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+1067
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+9604
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+663
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+1842
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+16577
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 

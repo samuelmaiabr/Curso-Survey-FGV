@@ -54,59 +54,27 @@ myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 
 ## Nota metodológica
 
-### Desenho amostral
+<!-- - Margem de erro: -->
 
-```{r}
-calculo_amostra_aleatoria_simples <-
-  function(margem_erro, z, p = 0.5) {
-    me <- margem_erro / 100
-    n <- (z ^ 2) * p * (1 - p) / (me ^ 2)
-    round(n)
-  }
-```
+<!-- - Nível de confiança: -->
 
-```{r}
-tabela_amostra <-
-  lst(erro_margem = c(5, 3, 1),
-      confianca_nivel = c(90, 95, 99)) %>%
-  cross_df() %>%
-  mutate(z = case_when(
-      confianca_nivel == 90 ~ 1.645,
-      confianca_nivel == 95 ~ 1.96,
-      confianca_nivel == 99 ~ 2.575)) %>%
-  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %>% 
-  select(-z) 
-```
-
----
-
-```{r}
-tabela_amostra %>%
-  knitr::kable(col.names = c("Margem de erro (%)", 
-                             "Nível de confiança (%)",
-                             "Amostra (n)")) %>%
-  row_spec(4, bold = T, color = "black") %>%
-  kable_styling(bootstrap_options = "striped", full_width = TRUE)
-```
-
----
-## Nota metodológica
-
-- Margem de erro:
-
-- Nível de confiança:
-
-- n - tamanho amostral:
+<!-- - n - tamanho amostral: -->
 
 Período de coleta: xxxx
 
 Recrutamento: onde divulgamos?
+
+Número de respostas:
 
 Plataforma de questionário utilizada: 
 
 ```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("img/qualtrics_logo.jpg")
 ```
+
+
+
+
 
 ---
 class: middle
@@ -118,6 +86,13 @@ class: middle
 ```{r echo=FALSE, out.width="100%"}
 knitr::include_graphics("img/foto-survey.jfif")
 ```
+
+---
+## Perfil das pessoas entrevistadas
+
+xxx
+
+
 ---
 ## Análise dos dados
 

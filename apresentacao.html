@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Docente: Jimmy Medeiros - CPDOC - FGV/RJ    Discentes: Beatriz Milz, Ivan Ramalho, Lucas Lemos, Pedro Vitorino, Samuel Maia" />
     <script src="libs/header-attrs-2.3/header-attrs.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -30,117 +29,25 @@ class: center, middle, inverse, title-slide
 
 ## Nota metodológica
 
-### Desenho amostral
+&lt;!-- - Margem de erro: --&gt;
 
+&lt;!-- - Nível de confiança: --&gt;
 
-```r
-calculo_amostra_aleatoria_simples &lt;-
-  function(margem_erro, z, p = 0.5) {
-    me &lt;- margem_erro / 100
-    n &lt;- (z ^ 2) * p * (1 - p) / (me ^ 2)
-    round(n)
-  }
-```
-
-
-```r
-tabela_amostra &lt;-
-  lst(erro_margem = c(5, 3, 1),
-      confianca_nivel = c(90, 95, 99)) %&gt;%
-  cross_df() %&gt;%
-  mutate(z = case_when(
-      confianca_nivel == 90 ~ 1.645,
-      confianca_nivel == 95 ~ 1.96,
-      confianca_nivel == 99 ~ 2.575)) %&gt;%
-  mutate(n = calculo_amostra_aleatoria_simples(erro_margem, z)) %&gt;% 
-  select(-z) 
-```
-
----
-
-
-```r
-tabela_amostra %&gt;%
-  knitr::kable(col.names = c("Margem de erro (%)", 
-                             "Nível de confiança (%)",
-                             "Amostra (n)")) %&gt;%
-  row_spec(4, bold = T, color = "black") %&gt;%
-  kable_styling(bootstrap_options = "striped", full_width = TRUE)
-```
-
-&lt;table class="table table-striped" style="margin-left: auto; margin-right: auto;"&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; Margem de erro (%) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Nível de confiança (%) &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Amostra (n) &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 90 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 271 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 90 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 752 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 90 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6765 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;font-weight: bold;color: black !important;"&gt; 5 &lt;/td&gt;
-   &lt;td style="text-align:right;font-weight: bold;color: black !important;"&gt; 95 &lt;/td&gt;
-   &lt;td style="text-align:right;font-weight: bold;color: black !important;"&gt; 384 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 95 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1067 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 95 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 9604 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 99 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 663 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 99 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1842 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 99 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16577 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
----
-## Nota metodológica
-
-- Margem de erro:
-
-- Nível de confiança:
-
-- n - tamanho amostral:
+&lt;!-- - n - tamanho amostral: --&gt;
 
 Período de coleta: xxxx
 
 Recrutamento: onde divulgamos?
 
+Número de respostas:
+
 Plataforma de questionário utilizada: 
 
 &lt;img src="img/qualtrics_logo.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+
+
 
 ---
 class: middle
@@ -150,6 +57,13 @@ class: middle
 ## Qualtrics
 
 &lt;img src="img/foto-survey.jfif" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Perfil das pessoas entrevistadas
+
+xxx
+
+
 ---
 ## Análise dos dados
 
