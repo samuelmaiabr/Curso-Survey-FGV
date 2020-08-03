@@ -54,19 +54,14 @@ myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 
 ## Nota metodológica
 
-<!-- - Margem de erro: -->
 
-<!-- - Nível de confiança: -->
+- Período de coleta: 02/08/2020 à __/08/2020
 
-<!-- - n - tamanho amostral: -->
+- Divulgação através de redes sociais: Facebook e Twitter
 
-Período de coleta: xxxx
+- Número de respostas: ____
 
-Recrutamento: onde divulgamos?
-
-Número de respostas:
-
-Plataforma de questionário utilizada: 
+- Plataforma de questionário utilizada: 
 
 ```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("img/qualtrics_logo.jpg")
@@ -112,6 +107,13 @@ knitr::include_graphics("img/hex-tidyverse.png")
 ## Resultados
 
 xxx
+
+
+---
+## Desafios/Aprendizados
+
+- Pergunta sobre sexo: utilizamos como referência o IBGE. Porém não foi inclusivo e não abrange todas as possibilidades.
+
 
 ---
 ## Referências
