@@ -32,7 +32,7 @@ class: center, middle, inverse, title-slide
 
 - Período de coleta: 02/08/2020 à __/08/2020
 
-- Divulgação através de redes sociais: Facebook e Twitter
+- Divulgação através de redes sociais: Facebook, Twitter, WhatsApp
 
 - Número de respostas: ____
 
@@ -54,12 +54,6 @@ class: middle
 &lt;img src="img/foto-survey.jfif" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
-## Perfil das pessoas entrevistadas
-
-xxx
-
-
----
 ## Análise dos dados
 
 - `R`  e `RStudio`:
@@ -71,6 +65,337 @@ xxx
 &lt;img src="img/hex-tidyverse.png" width="25%" style="display: block; margin: auto;" /&gt;
 
 ---
+### Análise dos dados
+
+Os dados foram exportados do Qualtrics como arquivo `.csv`
+
+- Os dados foram importados para o R e arrumados: 
+
+  - Remoção de linhas em qual nenhuma das perguntas foi respondida
+
+  - Alteração do nome das colunas
+
+  - Remoção de respostas de pessoas menores de 18 anos
+  
+  - Criação de nova coluna de Região, baseado nas respostas obtidas sobre o estado (UF) em qual reside
+
+
+
+
+
+
+
+
+
+
+---
+
+## Perfil das pessoas entrevistadas
+
+
+
+
+### Sexo 
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; sexo &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Feminino &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 73.7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Masculino &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Prefiro não responder &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.3 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+## Perfil das pessoas entrevistadas
+
+### Região 
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; regiao_br &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Centro-Oeste &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Nordeste &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Norte &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sudeste &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 83.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sul &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+## Perfil das pessoas entrevistadas
+
+### Idade 
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; idade &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 18 a 24 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 25 a 34 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33.7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 35 a 44 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 45 a 59 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 60 a 75 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.8 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+## Perfil das pessoas entrevistadas
+
+### Rural ou urbano?
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; rural_ou_urbano &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Área rural &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Área urbana &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 98 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+## Perfil das pessoas entrevistadas
+
+### Escolaridade
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; escolaridade &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ensino fundamental completo &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ensino médio completo &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ensino médio incompleto &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ensino superior completo &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28.6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ensino superior incompleto &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Pós-graduação completa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31.4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Pós-graduação incompleta &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+## Perfil das pessoas entrevistadas
+
+### Religião
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; religiao &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Cristã católica (Apostólica Romana, Apostólica Brasileira Ortodoxa, Renovação Carismática, Maronita) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Cristã evangélica Pentecostal e Neopentecostal (Assembleia de Deus, Congregação Cristã do Brasil, Igreja Universal do Reino de Deus, Evangelho Quadrangular, Igreja Mundial do Poder de Deus, Brasil para Cristo, Deus é Amor, Maranata, Nova Vida) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Cristã Protestantes históricas (Batistas, Presbiterianos, Luteranos, Metodistas, Adventistas) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Espírita (Kardecista) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14.2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Judaísmo &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Matrizes africanas (Candomblé, Umbanda) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Outra(s). Escreva qual(is) clicando no retângulo em branco abaixo: &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Religiões Orientais (Budismo, Messiânica Mundial, Hinduísmo, Xintoísmo) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Sem religião (Ateu, Agnóstico, Sem religião) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 37.2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Tradições esotéricas (Nova Era) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Tradições indígenas &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+## Perfil das pessoas entrevistadas
+
+### Faixa de Renda
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; faixa_renda &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Até R$ 1045,00 (até 1 Salário Mínimo) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; De R$ 1045 a R$ 2.090 (+ de 1 até 2 Salários Mínimos) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; De R$ 2.090 a R$ 3.135 (+ de 2 até 3 Salários Mínimos) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14.9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; De R$10.450 a R$15.675 (+ de 10 até 15 Salários Mínimos) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; De R$15.675 a R$20.900 (+ de 15 até 20 Salários Mínimos) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; De R$3.135 a R$5.225 (+ de 3 até 5 Salários Mínimos) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; De R$5.225 a R$10.450 (+ de 5 até 10 Salários Mínimos) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27.6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mais de R$20.900,00 (+ de 20 Salários Mínimos) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
 ## Resultados
 
 xxx
