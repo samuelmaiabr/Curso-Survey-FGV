@@ -19,7 +19,8 @@ knitr::opts_chunk$set(
 	echo=FALSE,
 	message = FALSE,
 	warning = FALSE,
-	fig.align = "center"
+	fig.align = "center",
+	dpi=300
 )
 ```
 
@@ -29,6 +30,7 @@ library(kableExtra)
 library(xaringanthemer)
 library(RefManageR)
 library(readr)
+library(gtsummary)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -57,11 +59,11 @@ myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 ## Nota metodológica
 
 
-- Período de coleta: 02/08/2020 à __/08/2020
+- Período de coleta: 02 de agosto, 14h30   até __ de 08, xxhxx.
 
 - Divulgação através de redes sociais: Facebook, Twitter, WhatsApp
 
-- Número de respostas: ____
+- Número de respostas (total): ____
 
 - Plataforma de questionário utilizada: 
 
@@ -130,8 +132,8 @@ glimpse(base_survey)
 
 ```{r include=FALSE}
 base_survey_renomeada <- base_survey %>%
-    slice(-1) %>%  # retira a primeira linha, não contém dados da base
-  janitor::clean_names() %>% 
+  slice(-1) %>%  # retira a primeira linha, não contém dados da base
+  janitor::clean_names() %>%
   rename(
     plataforma_info = 11,
     plataforma_info_outros = 12,
@@ -141,17 +143,17 @@ base_survey_renomeada <- base_survey %>%
     ocupacoes_info_outros = 16,
     
     
-    ouviu_falar_casos_graves = 17, 
+    ouviu_falar_casos_graves = 17,
     ouviu_falar_mascara = 18,
-    ouviu_falar_cloroquina = 19, 
-    ouviu_falar_aglomeracao = 20, 
-    ouviu_falar_mortes = 21,   
+    ouviu_falar_cloroquina = 19,
+    ouviu_falar_aglomeracao = 20,
+    ouviu_falar_mortes = 21,
     
-    concorda_casos_graves = 22, 
+    concorda_casos_graves = 22,
     concorda_mascara = 23,
-    concorda_cloroquina = 24, 
-    concorda_aglomeracao = 25, 
-    concorda_mortes = 26,   
+    concorda_cloroquina = 24,
+    concorda_aglomeracao = 25,
+    concorda_mortes = 26,
     
     idade = 27,
     sexo = 28,
@@ -161,7 +163,7 @@ base_survey_renomeada <- base_survey %>%
     religiao = 32,
     religiao_outros = 33,
     faixa_renda = 34
-  ) 
+  )
 
 glimpse(base_survey_renomeada)
 
@@ -204,19 +206,22 @@ base_survey_filtrada <- base_survey_renomeada %>%
 
 ```{r}
 base_limpa <- base_survey_filtrada %>%
-  mutate(faixa_renda = forcats::as_factor(faixa_renda),
-         faixa_renda = forcats::fct_relevel(faixa_renda,
-    levels = c(
-      "Até R$ 1045,00 (até 1 Salário Mínimo)",
-      "De R$ 1045 a R$ 2.090 (+ de 1 até 2 Salários Mínimos)",
-      "De R$ 2.090 a R$ 3.135 (+ de 2 até 3 Salários Mínimos)",
-      "De R$3.135 a R$5.225 (+ de 3 até 5 Salários Mínimos)",
-      "De R$5.225 a R$10.450 (+ de 5 até 10 Salários Mínimos)",
-      "De R$10.450 a R$15.675 (+ de 10 até 15 Salários Mínimos)",
-      "De R$15.675 a R$20.900 (+ de 15 até 20 Salários Mínimos)",
-      "Mais de R$20.900,00 (+ de 20 Salários Mínimos)"
+  mutate(
+    faixa_renda = forcats::as_factor(faixa_renda),
+    faixa_renda = forcats::fct_relevel(
+      faixa_renda,
+      levels = c(
+        "Até R$ 1045,00 (até 1 Salário Mínimo)",
+        "De R$ 1045 a R$ 2.090 (+ de 1 até 2 Salários Mínimos)",
+        "De R$ 2.090 a R$ 3.135 (+ de 2 até 3 Salários Mínimos)",
+        "De R$3.135 a R$5.225 (+ de 3 até 5 Salários Mínimos)",
+        "De R$5.225 a R$10.450 (+ de 5 até 10 Salários Mínimos)",
+        "De R$10.450 a R$15.675 (+ de 10 até 15 Salários Mínimos)",
+        "De R$15.675 a R$20.900 (+ de 15 até 20 Salários Mínimos)",
+        "Mais de R$20.900,00 (+ de 20 Salários Mínimos)"
+      )
     )
-  )) %>% 
+  ) %>%
   
   mutate(
     escolaridade = forcats::as_factor(escolaridade),
@@ -236,10 +241,8 @@ base_limpa <- base_survey_filtrada %>%
   )
 ```
 
-```{r}
-# base_limpa %>% group_by(escolaridade) %>% summarise()
-```
-
+- Número de respostas depois da organização e limpeza da base de dados: 
+**`r nrow(base_survey_filtrada)`  respostas**
 
 ---
 
@@ -327,15 +330,111 @@ porcentagem(base_limpa, faixa_renda)
 
 ---
 
-## Resultados
+## Resultados preliminares
 
-xxx
 
+```{r}
+# base_limpa %>% 
+#   group_by(ouviu_falar_casos_graves) %>% 
+#     summarise(quantidade = n()) %>% 
+#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
+# 
+# base_limpa %>% 
+#   group_by(ouviu_falar_mascara) %>% 
+#     summarise(quantidade = n()) %>% 
+#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
+# 
+# base_limpa %>% 
+#   group_by(ouviu_falar_cloroquina) %>% 
+#     summarise(quantidade = n()) %>% 
+#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
+# 
+# 
+# base_limpa %>% 
+#   group_by(ouviu_falar_aglomeracao) %>% 
+#     summarise(quantidade = n()) %>% 
+#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
+# 
+# 
+# base_limpa %>% 
+#   group_by(ouviu_falar_mortes) %>% 
+#     summarise(quantidade = n()) %>% 
+#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
+
+```
+- Melhorar a paleta de cores, eixos, legendas
+
+```{r grafico-informacao, out.width="63%", dpi=300}
+base_limpa %>%
+  pivot_longer(
+    cols = c(
+      ouviu_falar_casos_graves,
+      ouviu_falar_mascara,
+      ouviu_falar_cloroquina,
+      ouviu_falar_aglomeracao,
+      ouviu_falar_mortes
+    ),
+    names_to = "pergunta",
+    values_to = "resposta"
+  ) %>%
+  group_by(pergunta, resposta) %>%
+  summarise(contagem = n()) %>%
+  
+  ggplot() +
+  geom_col(aes(x = pergunta, y = contagem, fill = resposta), alpha = 0.8) +
+   scale_fill_viridis_d(option = "plasma", na.value = "black") +
+ # scale_fill_hue(h = c(90, 180), na.value = "black")+
+  coord_flip() +
+  theme_bw()+
+  theme(legend.position="bottom")
+```
+---
+
+## Resultados preliminares
+
+- Melhorar a paleta de cores, eixos, legendas
+
+```{r grafico-opiniao, out.width="65%"}
+base_limpa %>%
+  pivot_longer(
+    cols = c(
+      concorda_casos_graves,
+      concorda_mascara,
+      concorda_cloroquina,
+      concorda_aglomeracao,
+      concorda_mortes
+    ),
+    names_to = "pergunta",
+    values_to = "resposta"
+  ) %>%
+  mutate(
+    resposta = fct_relevel(
+      resposta,
+      "Concordo totalmente",
+      "Concordo parcialmente",
+      "Não concordo, nem discordo",
+      "Discordo parcialmente",
+      "Discordo totalmente"
+    )
+  ) %>%
+  group_by(pergunta, resposta) %>%
+  summarise(contagem = n()) %>%
+  
+  ggplot() +
+  geom_col(aes(x = pergunta, y = contagem, fill = resposta), alpha = 0.8) +
+     scale_fill_viridis_d(option = "plasma", na.value = "black") +
+  coord_flip() +
+  theme_bw()+
+  theme(legend.position="bottom") 
+  
+```
 
 ---
 ## Desafios/Aprendizados
 
-- Pergunta sobre sexo: utilizamos como referência o IBGE. Porém não foi inclusivo e não abrange todas as possibilidades.
+- **Pergunta sobre sexo:** utilizamos como referência o IBGE. Porém não foi inclusivo e não abrange todas as possibilidades.
+
+- Dificuldade em obter uma amostra representativa da população brasileira.
 
 
 ---
