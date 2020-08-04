@@ -106,13 +106,15 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 
 - Os dados foram importados para o R e arrumados: 
 
-  - Remoção de linhas em qual nenhuma das perguntas foi respondida
-
   - Alteração do nome das colunas
+
+  - Remoção de linhas em qual nenhuma das perguntas foi respondida
 
   - Remoção de respostas de pessoas menores de 18 anos
   
   - Criação de nova coluna de Região, baseado nas respostas obtidas sobre o estado (UF) em qual reside
+  
+  - Alteração do tipo de algumas variáveis
 
 
 ```{r include=FALSE}
@@ -163,7 +165,7 @@ base_survey_renomeada <- base_survey %>%
 
 glimpse(base_survey_renomeada)
 
-base_limpa <- base_survey_renomeada %>%
+base_survey_filtrada <- base_survey_renomeada %>%
   filter(!is.na(plataforma_info)) %>%
   filter(idade != "Menos de 18 anos") %>%  # Retira pessoas menores de 18 anos da base de dados
   mutate(
@@ -200,7 +202,43 @@ base_limpa <- base_survey_renomeada %>%
 
 ```
 
+```{r}
+base_limpa <- base_survey_filtrada %>%
+  mutate(faixa_renda = forcats::as_factor(faixa_renda),
+         faixa_renda = forcats::fct_relevel(faixa_renda,
+    levels = c(
+      "Até R$ 1045,00 (até 1 Salário Mínimo)",
+      "De R$ 1045 a R$ 2.090 (+ de 1 até 2 Salários Mínimos)",
+      "De R$ 2.090 a R$ 3.135 (+ de 2 até 3 Salários Mínimos)",
+      "De R$3.135 a R$5.225 (+ de 3 até 5 Salários Mínimos)",
+      "De R$5.225 a R$10.450 (+ de 5 até 10 Salários Mínimos)",
+      "De R$10.450 a R$15.675 (+ de 10 até 15 Salários Mínimos)",
+      "De R$15.675 a R$20.900 (+ de 15 até 20 Salários Mínimos)",
+      "Mais de R$20.900,00 (+ de 20 Salários Mínimos)"
+    )
+  )) %>% 
+  
+  mutate(
+    escolaridade = forcats::as_factor(escolaridade),
+    escolaridade = forcats::fct_relevel(
+      escolaridade,
+      levels = c(
+        "Ensino fundamental incompleto",
+        "Ensino fundamental completo",
+        "Ensino médio incompleto",
+        "Ensino médio completo",
+        "Ensino superior incompleto",
+        "Ensino superior completo",
+        "Pós-graduação incompleta",
+        "Pós-graduação completa"
+      )
+    )
+  )
+```
 
+```{r}
+# base_limpa %>% group_by(escolaridade) %>% summarise()
+```
 
 
 ---
@@ -279,7 +317,7 @@ porcentagem(base_limpa, escolaridade)
 
 ## Perfil das pessoas entrevistadas
 
-### Faixa de Renda - ARRUMAR ORDENAÇÃO, É FACTOR
+### Faixa de Renda 
 
 ```{r}
 porcentagem(base_limpa, faixa_renda)
