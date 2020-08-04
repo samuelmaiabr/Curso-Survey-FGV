@@ -38,6 +38,7 @@ style_mono_accent(
   header_font_google = google_font("Josefin Sans"),
   text_font_google   = google_font("Montserrat", "300", "300i"),
   code_font_google   = google_font("Fira Mono"),
+  text_font_size = "1.1rem"
 )
 
 ```
@@ -99,7 +100,7 @@ knitr::include_graphics("img/hex-tidyverse.png")
 ```
 
 ---
-### Análise dos dados
+## Análise dos dados
 
 Os dados foram exportados do Qualtrics como arquivo `.csv`
 
@@ -278,19 +279,7 @@ porcentagem(base_limpa, escolaridade)
 
 ## Perfil das pessoas entrevistadas
 
-### Religião
-
-```{r}
-porcentagem(base_limpa, religiao)
-
-```
-
-
----
-
-## Perfil das pessoas entrevistadas
-
-### Faixa de Renda
+### Faixa de Renda - ARRUMAR ORDENAÇÃO, É FACTOR
 
 ```{r}
 porcentagem(base_limpa, faixa_renda)
