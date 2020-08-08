@@ -59,19 +59,40 @@ myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 ## Nota metodológica
 
 
-- Período de coleta: 02 de agosto, 14h30   até __ de 08, xxhxx.
+- **Período de coleta:** 5 dias - 02 de agosto (14h38) até 07 de agosto, (14h38).
 
-- Divulgação através de redes sociais: Facebook, Twitter, WhatsApp
 
-- Número de respostas (total): ____
+- **Número de respostas (total):** **594**
 
-- Plataforma de questionário utilizada: 
+- **Plataforma de questionário utilizada:** [Qualtrics](https://www.qualtrics.com/pt-br/) (plano CoreXM Professional Trial)
 
 ```{r echo=FALSE, out.width="50%", include=TRUE}
 knitr::include_graphics("img/qualtrics_logo.jpg")
 ```
 
+---
+## Nota metodológica
 
+### Divulgação através de redes sociais:
+
+- **Facebook:** divulgação em grupos (
+[Politicas publicas UFABC](https://www.facebook.com/groups/PoliticasPublicasUFABC/?ref=bookmarks), 
+[Economia Unicamp – Geral](https://www.facebook.com/groups/economicaunicamp/?ref=bookmarks), 
+[CIENCIAS ECONOMICAS UFC](https://www.facebook.com/groups/356997067659468/?ref=bookmarks), 
+[IFCH – UFRGS](https://www.facebook.com/groups/449112015266324/?ref=bookmarks), 
+[Historia – UNICAMP](https://www.facebook.com/groups/458885197481790/?ref=bookmarks), 
+[Economia UFMG](https://www.facebook.com/groups/economiaufmg/?ref=bookmarks), 
+[Ciencias Sociais UFMG](https://www.facebook.com/groups/sociaisufmg/?ref=bookmarks), 
+[Historia UFMG](https://www.facebook.com/groups/historiaufmg/?ref=bookmarks), 
+[Economia UFPE](https://www.facebook.com/groups/112205125557115/?ref=bookmarks), 
+[Direito UFSC](https://www.facebook.com/groups/144935289016921/?ref=bookmarks), 
+[Ciencias Politica – UnB](https://www.facebook.com/groups/cienciapoliticaunb/?ref=bookmarks), 
+[Filosofia Unicamp – aberto](https://www.facebook.com/groups/219280108140140/?ref=bookmarks).
+)
+
+- **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) (11 Curtidas, 10 Retweets, 607 Impressões, 60 Engajamentos) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536) (2 Curtidas, 1 Retweet, ?? impressões, ? engajamentos).
+
+- **WhatsApp:** envio para familiares, grupos da faculdade.
 
 
 
@@ -121,7 +142,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 
 ```{r include=FALSE}
 base_survey <-
-  read_csv("dados/survey-04-08.csv",
+  read_csv("dados/dados_survey.csv",
            locale = locale(encoding = "UTF-8"),
            skip = 1)
 
