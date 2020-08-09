@@ -47,15 +47,17 @@ myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 
 ## Nota metodológica
 
+- **Amostra**: pessoas brasileiras que utilizam redes sociais e possuem idade maior ou igual à 18 anos.
+
 - **Pré-teste**: foi realizado um pré-teste para aprimorar as perguntas.
 
-- **Período de coleta:** 5 dias - 02 de agosto (14h38) até 07 de agosto, (14h38).
+- **Período de coleta:** 5 dias - 02 de agosto (14h38) até 07 de agosto (14h38).
 
-- **Número de respostas (total):** **594**
+- **Número de respostas (total):** **594**¹ .footnote[ ¹ O número de respostas utilizadas na análise é menor pois foi filtrado apenas respostas de pessoas maiores de 18 anos.]
 
 - **Plataforma de questionário utilizada:** [Qualtrics](https://www.qualtrics.com/pt-br/) (plano CoreXM Professional Trial)
 
-```{r echo=FALSE, out.width="50%", include=TRUE}
+```{r echo=FALSE, out.width="30%", include=TRUE}
 knitr::include_graphics("img/qualtrics_logo.jpg")
 ```
 
@@ -64,7 +66,7 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 
 ### Divulgação através de redes sociais:
 
-- **Facebook:** divulgação em grupos (
+- **Facebook:** divulgação em grupos¹ .footnote[¹
 [Politicas publicas UFABC](https://www.facebook.com/groups/PoliticasPublicasUFABC/?ref=bookmarks), 
 [Economia Unicamp – Geral](https://www.facebook.com/groups/economicaunicamp/?ref=bookmarks), 
 [CIENCIAS ECONOMICAS UFC](https://www.facebook.com/groups/356997067659468/?ref=bookmarks), 
@@ -77,7 +79,7 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 [Direito UFSC](https://www.facebook.com/groups/144935289016921/?ref=bookmarks), 
 [Ciencias Politica – UnB](https://www.facebook.com/groups/cienciapoliticaunb/?ref=bookmarks), 
 [Filosofia Unicamp – aberto](https://www.facebook.com/groups/219280108140140/?ref=bookmarks).
-)
+]
 
 - **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
 
