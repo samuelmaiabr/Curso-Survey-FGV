@@ -66,7 +66,7 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 
 ### Divulgação através de redes sociais:
 
-- **Facebook:** divulgação em grupos¹ .footnote[¹Ver Apêndice 1.]
+- **Facebook:** divulgação em grupos¹ .footnote[¹Ver [Apêndice 1](#apendice1). ]
 
 - **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
 
@@ -540,6 +540,7 @@ PrintBibliography(myBib)
 
 
 ---
+name: apendice1
 ## Apêndice 1
 
 **Grupos do Facebook onde foi feito a divulgação:**
