@@ -45,78 +45,6 @@ BibOptions(check.entries = FALSE,
 myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 ```
 
-## Nota metodológica
-
-- **Amostra**: pessoas brasileiras que utilizam redes sociais e possuem idade maior ou igual à 18 anos.
-
-- **Pré-teste**: foi realizado um pré-teste para aprimorar as perguntas.
-
-- **Período de coleta:** 5 dias - 2 de agosto (14h38) até 7 de agosto (14h38).
-
-- **Número de respostas (total):** **594**¹ 
-- **Número de respostas completadas:** **x**
-- **Número de respostas consideradas na análise:** **y** .footnote[ ¹ Nas respostas utilizadas na análise consideramos apenas aquelas de maiores de 18 anos e aquelas que informaram sua idade, tenham sido completadas ou não completadas]
-
-- **Plataforma de questionário utilizada:** [Qualtrics](https://www.qualtrics.com/pt-br/) (plano CoreXM Professional Trial)
-
-```{r echo=FALSE, out.width="30%", include=TRUE}
-knitr::include_graphics("img/qualtrics_logo.jpg")
-```
-
----
-## Nota metodológica
-
-### Divulgação através de redes sociais:
-
-- **Facebook:** divulgação em grupos¹ .footnote[¹Ver [Apêndice1] para a lista completa dos grupos(#apendice1). ]
-
-- **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
-
-- **WhatsApp:** envio para familiares, amigos, conhecidos e grupos da faculdade.
-
-
-
----
-class: middle
-
-# Exemplo da plataforma
-
-## Qualtrics
-
-```{r echo=FALSE, out.width="100%", include=TRUE}
-knitr::include_graphics("img/foto-survey.jfif")
-```
-
----
-## Análise dos dados
-
-- `R` `r NoCite(myBib, c("R-Core", "RStudio"))` e `RStudio`:
-
-```{r echo=FALSE, out.width="50%", include=TRUE}
-knitr::include_graphics("img/rstudio-r.jpg")
-```
-
-- Pacotes do `tidyverse` `r NoCite(myBib, "tidyverse")`:
-
-```{r echo=FALSE, out.width="25%", include=TRUE}
-knitr::include_graphics("img/hex-tidyverse.png")
-```
-
----
-## Análise dos dados
-
-Os dados foram exportados do Qualtrics como arquivo `.csv`
-
-- Os dados foram importados para o R e arrumados: 
-
-  - Alteração do nome das colunas
-
-  - Remoção de respostas de pessoas menores de 18 anos (e pessoas que não responderam a faixa etária)
-  
-  - Criação de nova coluna de Região, baseado nas respostas obtidas sobre o estado (UF) em qual reside
-  
-  - Alteração do tipo de algumas variáveis
-
 
 ```{r include=FALSE}
 base_survey <-
@@ -240,6 +168,88 @@ base_limpa <- base_survey_filtrada %>%  # Arrumar os levels dos fatores
     )
   )
 ```
+
+
+## Nota metodológica
+
+- **Amostra**: pessoas brasileiras que utilizam redes sociais e possuem idade maior ou igual à 18 anos.
+
+- **Pré-teste**: foi realizado um pré-teste para aprimorar as perguntas.
+
+- **Período de coleta:** 5 dias - 2 de agosto (14h38) até 7 de agosto (14h38).
+
+- **Número de respostas:**
+
+  - **Total: 594 respostas**
+
+  - **Respondidas de forma completa:** **x respostas**
+
+  - **Consideradas na análise:** **`r nrow(base_survey_filtrada)`  respostas**¹ .footnote[¹ Nas respostas utilizadas na análise consideramos apenas aquelas de maiores de 18 anos e aquelas que informaram sua idade, tenham sido completadas ou não completadas]
+
+
+---
+## Nota metodológica
+
+- **Plataforma de questionário utilizada:** [Qualtrics](https://www.qualtrics.com/pt-br/) (plano CoreXM Professional Trial)
+
+```{r echo=FALSE, out.width="30%", include=TRUE}
+knitr::include_graphics("img/qualtrics_logo.jpg")
+```
+
+
+
+### Divulgação através de redes sociais:
+
+- **Facebook:** divulgação em grupos¹ .footnote[¹Ver [Apêndice 1](#apendice1) para a lista completa dos grupos. ]
+
+- **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
+
+- **WhatsApp:** envio para familiares, amigos(as), conhecidos(as) e grupos da faculdade.
+
+
+
+---
+class: middle
+
+# Exemplo da plataforma
+
+## Qualtrics
+
+```{r echo=FALSE, out.width="100%", include=TRUE}
+knitr::include_graphics("img/foto-survey.jfif")
+```
+
+---
+## Análise dos dados
+
+- `R` `r NoCite(myBib, c("R-Core", "RStudio"))` e `RStudio`:
+
+```{r echo=FALSE, out.width="50%", include=TRUE}
+knitr::include_graphics("img/rstudio-r.jpg")
+```
+
+- Pacotes do `tidyverse` `r NoCite(myBib, "tidyverse")`:
+
+```{r echo=FALSE, out.width="25%", include=TRUE}
+knitr::include_graphics("img/hex-tidyverse.png")
+```
+
+---
+## Análise dos dados
+
+Os dados foram exportados do Qualtrics como arquivo `.csv`
+
+- Os dados foram importados para o R e arrumados: 
+
+  - Alteração do nome das colunas
+
+  - Remoção de respostas de pessoas menores de 18 anos (e pessoas que não responderam a faixa etária)
+  
+  - Criação de nova coluna de Região, baseado nas respostas obtidas sobre o estado (UF) em qual reside
+  
+  - Alteração do tipo de algumas variáveis
+
+
 
 - Número de respostas depois da organização e limpeza da base de dados: 
 **`r nrow(base_survey_filtrada)`  respostas**
@@ -543,9 +553,9 @@ PrintBibliography(myBib)
 
 ---
 name: apendice1
-## Apêndice 1¹ .footnote[¹Clique no nome do grupo para ser redirecionado à sua página no Facebook.]
+## Apêndice 1
 
-**Grupos do Facebook onde foi feito a divulgação:**
+**Grupos do Facebook onde foi feito a divulgação: ¹ .footnote[¹Clique no nome do grupo para ser redirecionado à sua página no Facebook.]**
 
 .pull-left[
 - [Politicas publicas UFABC](https://www.facebook.com/groups/PoliticasPublicasUFABC/?ref=bookmarks)
