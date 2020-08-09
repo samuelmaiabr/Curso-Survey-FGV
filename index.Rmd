@@ -66,20 +66,7 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 
 ### Divulgação através de redes sociais:
 
-- **Facebook:** divulgação em grupos¹ .footnote[¹
-[Politicas publicas UFABC](https://www.facebook.com/groups/PoliticasPublicasUFABC/?ref=bookmarks), 
-[Economia Unicamp – Geral](https://www.facebook.com/groups/economicaunicamp/?ref=bookmarks), 
-[CIENCIAS ECONOMICAS UFC](https://www.facebook.com/groups/356997067659468/?ref=bookmarks), 
-[IFCH – UFRGS](https://www.facebook.com/groups/449112015266324/?ref=bookmarks), 
-[Historia – UNICAMP](https://www.facebook.com/groups/458885197481790/?ref=bookmarks), 
-[Economia UFMG](https://www.facebook.com/groups/economiaufmg/?ref=bookmarks), 
-[Ciencias Sociais UFMG](https://www.facebook.com/groups/sociaisufmg/?ref=bookmarks), 
-[Historia UFMG](https://www.facebook.com/groups/historiaufmg/?ref=bookmarks), 
-[Economia UFPE](https://www.facebook.com/groups/112205125557115/?ref=bookmarks), 
-[Direito UFSC](https://www.facebook.com/groups/144935289016921/?ref=bookmarks), 
-[Ciencias Politica – UnB](https://www.facebook.com/groups/cienciapoliticaunb/?ref=bookmarks), 
-[Filosofia Unicamp – aberto](https://www.facebook.com/groups/219280108140140/?ref=bookmarks).
-]
+- **Facebook:** divulgação em grupos¹ .footnote[¹Ver Apêndice 1.]
 
 - **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
 
@@ -545,3 +532,50 @@ base_limpa %>%
 ```{r refs, echo=FALSE, results="asis", include=TRUE}
 PrintBibliography(myBib)
 ```
+
+
+---
+## Apêndice 1
+
+**Grupos do Facebook onde foi feito a divulgação:**
+
+.pull-left[
+- [Politicas publicas UFABC](https://www.facebook.com/groups/PoliticasPublicasUFABC/?ref=bookmarks)
+
+- [Economia Unicamp – Geral](https://www.facebook.com/groups/economicaunicamp/?ref=bookmarks)
+
+- [CIENCIAS ECONOMICAS UFC](https://www.facebook.com/groups/356997067659468/?ref=bookmarks)
+
+- [IFCH – UFRGS](https://www.facebook.com/groups/449112015266324/?ref=bookmarks)
+
+- [Historia – UNICAMP](https://www.facebook.com/groups/458885197481790/?ref=bookmarks)
+
+- [Economia UFMG](https://www.facebook.com/groups/economiaufmg/?ref=bookmarks)
+
+- [Ciencias Sociais UFMG](https://www.facebook.com/groups/sociaisufmg/?ref=bookmarks)
+
+- [Historia UFMG](https://www.facebook.com/groups/historiaufmg/?ref=bookmarks)
+
+- [Economia UFPE](https://www.facebook.com/groups/112205125557115/?ref=bookmarks)
+
+]
+
+.pull-right[
+
+- [Direito UFSC](https://www.facebook.com/groups/144935289016921/?ref=bookmarks)
+
+- [Ciencias Politica – UnB](https://www.facebook.com/groups/cienciapoliticaunb/?ref=bookmarks)
+
+- [Filosofia Unicamp – aberto](https://www.facebook.com/groups/219280108140140/?ref=bookmarks)
+
+- [EBA-UFRJ](https://www.facebook.com/groups/belasartesufrj/?multi_permalinks=3219941884711295)
+
+- [Empregos no Terceiro Setor](https://www.facebook.com/groups/empregosnoterceirosetor)
+
+- [Ciências Sociais e o Mercado de Trabalho](https://www.facebook.com/groups/cienciassociaiseomercadodetrabalho)
+
+- [Biblioteca Virtual dos alunos IFCS](https://www.facebook.com/groups/1528128057477029)
+
+]
+
+
