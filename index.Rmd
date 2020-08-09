@@ -70,7 +70,7 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 
 - **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
 
-- **WhatsApp:** envio para familiares, grupos da faculdade.
+- **WhatsApp:** envio para familiares, amigos, conhecidos e grupos da faculdade.
 
 
 
