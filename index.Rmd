@@ -584,4 +584,8 @@ name: apendice1
 
 ]
 
-
+<center>
+<form> 
+ <input type="button" class="btn btn-primary" value="Voltar à página anterior!" onclick="history.back()">
+</form>
+</center>
