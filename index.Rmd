@@ -244,7 +244,7 @@ base_limpa <- base_survey_filtrada %>%  # Arrumar os levels dos fatores
 
 ---
 
-### Perfil das pessoas entrevistadas - Sexo
+### Perfil - Sexo
 ```{r include=FALSE}
 
 porcentagem <- function(data, var){
@@ -286,7 +286,7 @@ Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/
 
 ---
 
-### Perfil das pessoas entrevistadas - Região 
+### Perfil - Região 
 
 .pull-left[
 
@@ -316,7 +316,7 @@ Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707
 
 ---
 
-### Perfil das pessoas entrevistadas - Idade 
+### Perfil - Idade 
 
 .pull-left[
 
@@ -363,7 +363,7 @@ Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707
 
 ---
 
-### Perfil das pessoas entrevistadas - Rural ou urbano
+### Perfil - Rural ou urbano
 
 .pull-left[
 
@@ -393,7 +393,7 @@ Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/
 
 ---
 
-### Perfil das pessoas entrevistadas - Escolaridade
+### Perfil - Escolaridade
 
 
 
@@ -408,7 +408,7 @@ porcentagem(base_limpa, escolaridade) %>%
 
 ---
 
-### Perfil das pessoas entrevistadas - Escolaridade
+### Perfil  - Escolaridade
 
 #### População Brasileira 
 
@@ -421,20 +421,25 @@ Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/
 
 
 ---
-
-### Perfil das pessoas entrevistadas - Faixa de Renda 
+### Perfil - Faixa de Renda 
 
 ```{r}
 porcentagem(base_limpa, faixa_renda)  %>%
-  rename("Faixa de Renda" = 1) %>%
+  rename("Faixa de Renda da Amostra" = 1) %>%
   knitr::kable()
 
 ```
 
+---
+### Perfil - Faixa de Renda 
 
+#### População Brasileira
+
+
+- Encontrar uma imagem boa!
 ---
 
-## Resultados preliminares
+## Resultados 
 
 - ideias de gráficos: cruzar informações
 
@@ -448,7 +453,7 @@ porcentagem(base_limpa, faixa_renda)  %>%
 
 ---
 
-## Resultados preliminares
+## Resultados 
 
 - Melhorar a paleta de cores, eixos, legendas
 
@@ -478,7 +483,7 @@ base_limpa %>%
 ```
 ---
 
-## Resultados preliminares
+## Resultados
 
 - Melhorar a paleta de cores, eixos, legendas
 
