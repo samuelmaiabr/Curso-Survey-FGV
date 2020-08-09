@@ -25,12 +25,11 @@ class: center, middle, inverse, title-slide
 
 
 
-
 ## Nota metodológica
 
+- **Pré-teste**: foi realizado um pré-teste para aprimorar as perguntas.
 
 - **Período de coleta:** 5 dias - 02 de agosto (14h38) até 07 de agosto, (14h38).
-
 
 - **Número de respostas (total):** **594**
 
@@ -58,7 +57,7 @@ class: center, middle, inverse, title-slide
 [Filosofia Unicamp – aberto](https://www.facebook.com/groups/219280108140140/?ref=bookmarks).
 )
 
-- **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) (11 Curtidas, 10 Retweets, 607 Impressões, 60 Engajamentos) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536) (2 Curtidas, 1 Retweet, ?? impressões, ? engajamentos).
+- **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
 
 - **WhatsApp:** envio para familiares, grupos da faculdade.
 
@@ -93,9 +92,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 
   - Alteração do nome das colunas
 
-  - Remoção de linhas em qual nenhuma das perguntas foi respondida
-
-  - Remoção de respostas de pessoas menores de 18 anos
+  - Remoção de respostas de pessoas menores de 18 anos (e pessoas que não responderam a faixa etária)
   
   - Criação de nova coluna de Região, baseado nas respostas obtidas sobre o estado (UF) em qual reside
   
@@ -110,32 +107,31 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 
 
 - Número de respostas depois da organização e limpeza da base de dados: 
-**489  respostas**
+**490  respostas**
 
 ---
 
-## Perfil das pessoas entrevistadas
+### Perfil das pessoas entrevistadas - Sexo
 
+.pull-left[
 
-
-
-### Sexo 
+#### Amostra
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; sexo &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sexo &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Feminino &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 71.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.2 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Masculino &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 26.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26.7 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Prefiro não responder &lt;/td&gt;
@@ -148,16 +144,32 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+&lt;img src="img/graficos_ibge/jovens_populacao_3_pop_sexo_pizza.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18320-quantidade-de-homens-e-mulheres.html)
+]
+
+
+
 ---
 
-## Perfil das pessoas entrevistadas
+### Perfil das pessoas entrevistadas - Região 
 
-### Região 
+.pull-left[
+
+#### Amostra
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; regiao_br &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Região &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
@@ -168,7 +180,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Nordeste &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 7.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7.8 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Norte &lt;/td&gt;
@@ -176,7 +188,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Sudeste &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 80.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80.4 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Sul &lt;/td&gt;
@@ -189,53 +201,87 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+&lt;img src="img/graficos_ibge/regiao.JPG" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707_informativo.pdf)
+]
+
+
 ---
 
-## Perfil das pessoas entrevistadas
+### Perfil das pessoas entrevistadas - Idade 
 
-### Idade 
+.pull-left[
+
+#### Amostra
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; idade &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Idade &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 18 a 24 anos &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 20.2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 60 a 75 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.3 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 25 a 34 anos &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 33.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 45 a 59 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.2 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; 35 a 44 anos &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 18.4 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 45 a 59 anos &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 25 a 34 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33.7 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 60 a 75 anos &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6.3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 18 a 24 anos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.4 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+
+
+
+
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+&lt;img src="img/graficos_ibge/jovens_populacao_4_piramide_etaria_2barras.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18318-piramide-etaria.html)
+]
+
+
 ---
 
-## Perfil das pessoas entrevistadas
+### Perfil das pessoas entrevistadas - Rural ou urbano
 
-### Rural ou urbano?
+.pull-left[
+
+#### Amostra
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; rural_ou_urbano &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Área &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
@@ -251,17 +297,31 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+&lt;img src="img/graficos_ibge/2018_03_26_jovens-populacao-urbana.jpg" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18313-populacao-rural-e-urbana.html)
+]
+
 
 ---
 
-## Perfil das pessoas entrevistadas
+### Perfil das pessoas entrevistadas - Escolaridade
 
-### Escolaridade
+
+
+#### Amostra
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; escolaridade &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Escolaridade &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
@@ -280,7 +340,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Ensino superior incompleto &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 20.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.8 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Ensino superior completo &lt;/td&gt;
@@ -292,22 +352,31 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Pós-graduação completa &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 32.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32.2 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+---
+
+### Perfil das pessoas entrevistadas - Escolaridade
+
+#### População Brasileira 
+
+&lt;img src="img/graficos_ibge/jovens_educacao_nivel-instrucao.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18317-educacao.html)
+
 
 ---
 
-## Perfil das pessoas entrevistadas
-
-### Faixa de Renda 
+### Perfil das pessoas entrevistadas - Faixa de Renda 
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; faixa_renda &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Faixa de Renda &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Porcentagem (%) &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
@@ -318,7 +387,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; De R$ 1045 a R$ 2.090 (+ de 1 até 2 Salários Mínimos) &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 12.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.2 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; De R$ 2.090 a R$ 3.135 (+ de 2 até 3 Salários Mínimos) &lt;/td&gt;
@@ -330,7 +399,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; De R$5.225 a R$10.450 (+ de 5 até 10 Salários Mínimos) &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 28.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28.6 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; De R$10.450 a R$15.675 (+ de 10 até 15 Salários Mínimos) &lt;/td&gt;
@@ -356,7 +425,19 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 
 ## Resultados preliminares
 
+- ideias de gráficos: cruzar informações
 
+
+
+
+
+
+
+
+
+---
+
+## Resultados preliminares
 
 - Melhorar a paleta de cores, eixos, legendas
 

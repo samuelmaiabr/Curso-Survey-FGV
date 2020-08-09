@@ -27,23 +27,12 @@ knitr::opts_chunk$set(
 ```{r pacotes, message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse) 
 library(kableExtra)
-library(xaringanthemer)
+# library(xaringanthemer)
 library(RefManageR)
 library(readr)
 library(gtsummary)
 ```
 
-```{r xaringan-themer, include=FALSE, warning=FALSE}
-style_mono_accent(
-  base_color = "#04324c",
-  inverse_background_color = "#066395",
-  header_font_google = google_font("Josefin Sans"),
-  text_font_google   = google_font("Montserrat", "300", "300i"),
-  code_font_google   = google_font("Fira Mono"),
-  text_font_size = "1.1rem"
-)
-
-```
 
 ```{r, load_refs, include=FALSE, cache=FALSE}
 BibOptions(check.entries = FALSE,
@@ -58,9 +47,9 @@ myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 
 ## Nota metodológica
 
+- **Pré-teste**: foi realizado um pré-teste para aprimorar as perguntas.
 
 - **Período de coleta:** 5 dias - 02 de agosto (14h38) até 07 de agosto, (14h38).
-
 
 - **Número de respostas (total):** **594**
 
@@ -90,7 +79,7 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 [Filosofia Unicamp – aberto](https://www.facebook.com/groups/219280108140140/?ref=bookmarks).
 )
 
-- **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) (11 Curtidas, 10 Retweets, 607 Impressões, 60 Engajamentos) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536) (2 Curtidas, 1 Retweet, ?? impressões, ? engajamentos).
+- **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
 
 - **WhatsApp:** envio para familiares, grupos da faculdade.
 
@@ -131,9 +120,7 @@ Os dados foram exportados do Qualtrics como arquivo `.csv`
 
   - Alteração do nome das colunas
 
-  - Remoção de linhas em qual nenhuma das perguntas foi respondida
-
-  - Remoção de respostas de pessoas menores de 18 anos
+  - Remoção de respostas de pessoas menores de 18 anos (e pessoas que não responderam a faixa etária)
   
   - Criação de nova coluna de Região, baseado nas respostas obtidas sobre o estado (UF) em qual reside
   
@@ -154,8 +141,9 @@ glimpse(base_survey)
 ```{r include=FALSE}
 base_survey_renomeada <- base_survey %>%
   slice(-1) %>%  # retira a primeira linha, não contém dados da base
-  janitor::clean_names() %>%
+  janitor::clean_names() %>% # função para limpar o nome das bases
   rename(
+    #renomear as colunas
     plataforma_info = 11,
     plataforma_info_outros = 12,
     instituicao_info = 13,
@@ -189,9 +177,9 @@ base_survey_renomeada <- base_survey %>%
 glimpse(base_survey_renomeada)
 
 base_survey_filtrada <- base_survey_renomeada %>%
-  filter(!is.na(plataforma_info)) %>%
   filter(idade != "Menos de 18 anos") %>%  # Retira pessoas menores de 18 anos da base de dados
   mutate(
+    #Cria a coluna de Região
     regiao_br = case_when(
       estado %in% c(
         "Amazonas",
@@ -226,9 +214,9 @@ base_survey_filtrada <- base_survey_renomeada %>%
 ```
 
 ```{r}
-base_limpa <- base_survey_filtrada %>%
+base_limpa <- base_survey_filtrada %>%  # Arrumar os levels dos fatores
   mutate(
-    faixa_renda = forcats::as_factor(faixa_renda),
+#    faixa_renda = forcats::as_factor(faixa_renda),
     faixa_renda = forcats::fct_relevel(
       faixa_renda,
       levels = c(
@@ -245,7 +233,7 @@ base_limpa <- base_survey_filtrada %>%
   ) %>%
   
   mutate(
-    escolaridade = forcats::as_factor(escolaridade),
+    #escolaridade = forcats::as_factor(escolaridade),
     escolaridade = forcats::fct_relevel(
       escolaridade,
       levels = c(
@@ -267,8 +255,7 @@ base_limpa <- base_survey_filtrada %>%
 
 ---
 
-## Perfil das pessoas entrevistadas
-
+### Perfil das pessoas entrevistadas - Sexo
 ```{r include=FALSE}
 
 porcentagem <- function(data, var){
@@ -277,74 +264,181 @@ porcentagem <- function(data, var){
     summarise(quantidade = n()) %>% 
     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) %>% 
     select(-quantidade) %>% 
-    rename("Porcentagem (%)" = 2) %>% 
-    knitr::kable()
+    rename("Porcentagem (%)" = 2) 
 }
 
 ```
+.pull-left[
 
-
-### Sexo 
+#### Amostra
 
 ```{r echo=FALSE}
-porcentagem(base_limpa, sexo)
+porcentagem(base_limpa, sexo) %>%
+    rename("Sexo" = 1) %>%   
+  knitr::kable()
+
+```
+
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+```{r echo=FALSE, out.width="100%", include=TRUE}
+knitr::include_graphics("img/graficos_ibge/jovens_populacao_3_pop_sexo_pizza.png")
+```
+
+
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18320-quantidade-de-homens-e-mulheres.html)
+]
+
+
+
+---
+
+### Perfil das pessoas entrevistadas - Região 
+
+.pull-left[
+
+#### Amostra
+
+```{r echo=FALSE}
+porcentagem(base_limpa, regiao_br) %>%
+  rename("Região" = 1) %>%
+  knitr::kable()
+
+```
+
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+```{r echo=FALSE, out.width="100%", include=TRUE}
+knitr::include_graphics("img/graficos_ibge/regiao.JPG")
+```
+
+
+Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707_informativo.pdf)
+]
+
+
+---
+
+### Perfil das pessoas entrevistadas - Idade 
+
+.pull-left[
+
+#### Amostra
+
+```{r}
+porcentagem(base_limpa, idade) %>% arrange(desc(idade)) %>%
+  rename("Idade" = 1) %>%
+  knitr::kable()
+
+```
+
+
+```{r}
+# base_limpa %>%
+#   group_by(idade, sexo) %>%
+#   summarise(quantidade = n()) %>%
+#   ungroup() %>%
+#   complete(idade, sexo,  fill = list(quantidade = 0)) %>%
+#   ggplot() +
+#   geom_col(aes(x = idade, y = quantidade, fill = sexo), position = "dodge") +
+#   coord_flip() +
+#   scale_fill_brewer(palette = "Pastel1", na.value = "grey50") +
+#   theme_bw() +
+#   labs(x = "Faixa etária", y = "Número de respostas", fill = "Sexo")
+
+```
+
+
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+```{r echo=FALSE, out.width="100%", include=TRUE}
+knitr::include_graphics("img/graficos_ibge/jovens_populacao_4_piramide_etaria_2barras.png")
+```
+
+
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18318-piramide-etaria.html)
+]
+
+
+---
+
+### Perfil das pessoas entrevistadas - Rural ou urbano
+
+.pull-left[
+
+#### Amostra
+
+```{r}
+porcentagem(base_limpa, rural_ou_urbano) %>%
+  rename("Área" = 1) %>%
+  knitr::kable()
+
+```
+
+]
+
+.pull-right[
+
+#### População Brasileira 
+
+```{r echo=FALSE, out.width="100%", include=TRUE}
+knitr::include_graphics("img/graficos_ibge/2018_03_26_jovens-populacao-urbana.jpg")
+```
+
+
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18313-populacao-rural-e-urbana.html)
+]
+
+
+---
+
+### Perfil das pessoas entrevistadas - Escolaridade
+
+
+
+#### Amostra
+
+```{r}
+porcentagem(base_limpa, escolaridade) %>%
+  rename("Escolaridade" = 1) %>%
+  knitr::kable()
 
 ```
 
 ---
 
-## Perfil das pessoas entrevistadas
+### Perfil das pessoas entrevistadas - Escolaridade
 
-### Região 
+#### População Brasileira 
 
-```{r}
-porcentagem(base_limpa, regiao_br)
-
+```{r echo=FALSE, out.width="80%", include=TRUE}
+knitr::include_graphics("img/graficos_ibge/jovens_educacao_nivel-instrucao.png")
 ```
 
----
 
-## Perfil das pessoas entrevistadas
-
-### Idade 
-
-```{r}
-porcentagem(base_limpa, idade)
-
-```
-
----
-
-## Perfil das pessoas entrevistadas
-
-### Rural ou urbano?
-
-```{r}
-porcentagem(base_limpa, rural_ou_urbano)
-
-```
+Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18317-educacao.html)
 
 
 ---
 
-## Perfil das pessoas entrevistadas
-
-### Escolaridade
+### Perfil das pessoas entrevistadas - Faixa de Renda 
 
 ```{r}
-porcentagem(base_limpa, escolaridade)
-
-```
-
-
----
-
-## Perfil das pessoas entrevistadas
-
-### Faixa de Renda 
-
-```{r}
-porcentagem(base_limpa, faixa_renda)
+porcentagem(base_limpa, faixa_renda)  %>%
+  rename("Faixa de Renda" = 1) %>%
+  knitr::kable()
 
 ```
 
@@ -353,36 +447,20 @@ porcentagem(base_limpa, faixa_renda)
 
 ## Resultados preliminares
 
+- ideias de gráficos: cruzar informações
 
-```{r}
-# base_limpa %>% 
-#   group_by(ouviu_falar_casos_graves) %>% 
-#     summarise(quantidade = n()) %>% 
-#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
-# 
-# base_limpa %>% 
-#   group_by(ouviu_falar_mascara) %>% 
-#     summarise(quantidade = n()) %>% 
-#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
-# 
-# base_limpa %>% 
-#   group_by(ouviu_falar_cloroquina) %>% 
-#     summarise(quantidade = n()) %>% 
-#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
-# 
-# 
-# base_limpa %>% 
-#   group_by(ouviu_falar_aglomeracao) %>% 
-#     summarise(quantidade = n()) %>% 
-#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
-# 
-# 
-# base_limpa %>% 
-#   group_by(ouviu_falar_mortes) %>% 
-#     summarise(quantidade = n()) %>% 
-#     mutate(porcentagem = round(100 * quantidade/sum(quantidade), 1)) 
 
-```
+
+
+
+
+
+
+
+---
+
+## Resultados preliminares
+
 - Melhorar a paleta de cores, eixos, legendas
 
 ```{r grafico-informacao, out.width="63%", dpi=300}
