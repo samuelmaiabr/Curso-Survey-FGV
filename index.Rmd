@@ -541,7 +541,7 @@ PrintBibliography(myBib)
 
 ---
 name: apendice1
-## Apêndice 1
+## Apêndice 1¹ .footnote[¹Clique no nome do grupo para ser redirecionado à sua página no Facebook.]
 
 **Grupos do Facebook onde foi feito a divulgação:**
 
