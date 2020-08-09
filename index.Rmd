@@ -51,11 +51,9 @@ myBib <- ReadBib("referencias/referencias.bib", check = FALSE)
 
 - **Pré-teste**: foi realizado um pré-teste para aprimorar as perguntas.
 
-- **Período de coleta:** 5 dias - 2 de agosto (14h38) até 7 de agosto (14h38).
+- **Período de coleta:** 5 dias - 02 de agosto (14h38) até 07 de agosto (14h38).
 
-- **Número de respostas (total):** **594**¹ 
-- **Número de respostas completadas:** **x**
-- **Número de respostas consideradas na análise:** **y** .footnote[ ¹ Nas respostas utilizadas na análise consideramos apenas aquelas de maiores de 18 anos e aquelas que informaram sua idade, tenham sido completadas ou não completadas]
+- **Número de respostas (total):** **594**¹ .footnote[ ¹ O número de respostas utilizadas na análise é menor pois foi filtrado apenas respostas de pessoas maiores de 18 anos.]
 
 - **Plataforma de questionário utilizada:** [Qualtrics](https://www.qualtrics.com/pt-br/) (plano CoreXM Professional Trial)
 
@@ -68,11 +66,11 @@ knitr::include_graphics("img/qualtrics_logo.jpg")
 
 ### Divulgação através de redes sociais:
 
-- **Facebook:** divulgação em grupos¹ .footnote[¹Ver [Apêndice1] para a lista completa dos grupos(#apendice1). ]
+- **Facebook:** divulgação em grupos¹ .footnote[¹Ver [Apêndice 1](#apendice1). ]
 
 - **Twitter:** compartilhado no perfil de [Beatriz Milz](https://twitter.com/BeaMilz/status/1290297160638926849) e [Pedro Vitorino](https://twitter.com/peu_cesar/status/1290301211305025536).
 
-- **WhatsApp:** envio para familiares, amigos, conhecidos e grupos da faculdade.
+- **WhatsApp:** envio para familiares, grupos da faculdade.
 
 
 
@@ -261,7 +259,7 @@ porcentagem <- function(data, var){
 ```
 .pull-left[
 
-#### Amostra
+#### Nossa amostra
 
 ```{r echo=FALSE}
 porcentagem(base_limpa, sexo) %>%
@@ -274,15 +272,14 @@ porcentagem(base_limpa, sexo) %>%
 
 .pull-right[
 
-#### População Brasileira 
+#### População Brasileira [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18320-quantidade-de-homens-e-mulheres.html)
+]
 
 ```{r echo=FALSE, out.width="100%", include=TRUE}
 knitr::include_graphics("img/graficos_ibge/jovens_populacao_3_pop_sexo_pizza.png")
 ```
 
 
-Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18320-quantidade-de-homens-e-mulheres.html)
-]
 
 
 
@@ -292,7 +289,7 @@ Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/
 
 .pull-left[
 
-#### Amostra
+#### Nossa amostra
 
 ```{r echo=FALSE}
 porcentagem(base_limpa, regiao_br) %>%
@@ -305,15 +302,14 @@ porcentagem(base_limpa, regiao_br) %>%
 
 .pull-right[
 
-#### População Brasileira 
+#### População Brasileira [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707_informativo.pdf)
+]
 
 ```{r echo=FALSE, out.width="100%", include=TRUE}
 knitr::include_graphics("img/graficos_ibge/regiao.JPG")
 ```
 
 
-Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707_informativo.pdf)
-]
 
 
 ---
@@ -322,7 +318,7 @@ Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707
 
 .pull-left[
 
-#### Amostra
+#### Nossa amostra .footnote[Não houve respostas de maiores de 75 anos.]
 
 ```{r}
 porcentagem(base_limpa, idade) %>% arrange(desc(idade)) %>%
@@ -352,15 +348,14 @@ porcentagem(base_limpa, idade) %>% arrange(desc(idade)) %>%
 
 .pull-right[
 
-#### População Brasileira 
+#### População Brasileira [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707_informativo.pdf)
+]
 
 ```{r echo=FALSE, out.width="100%", include=TRUE}
 knitr::include_graphics("img/graficos_ibge/idade.JPG")
 ```
 
 
-Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707_informativo.pdf)
-]
 
 
 ---
@@ -369,7 +364,7 @@ Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707
 
 .pull-left[
 
-#### Amostra
+#### Nossa amostra
 
 ```{r}
 porcentagem(base_limpa, rural_ou_urbano) %>%
@@ -382,15 +377,14 @@ porcentagem(base_limpa, rural_ou_urbano) %>%
 
 .pull-right[
 
-#### População Brasileira 
+#### População Brasileira [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18313-populacao-rural-e-urbana.html)
+]
 
 ```{r echo=FALSE, out.width="100%", include=TRUE}
 knitr::include_graphics("img/graficos_ibge/2018_03_26_jovens-populacao-urbana.jpg")
 ```
 
 
-Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18313-populacao-rural-e-urbana.html)
-]
 
 
 ---
@@ -412,14 +406,13 @@ porcentagem(base_limpa, escolaridade) %>%
 
 ### Perfil  - Escolaridade
 
-#### População Brasileira 
+#### População Brasileira [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18317-educacao.html)
 
 ```{r echo=FALSE, out.width="80%", include=TRUE}
 knitr::include_graphics("img/graficos_ibge/jovens_educacao_nivel-instrucao.png")
 ```
 
 
-Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18317-educacao.html)
 
 
 ---
@@ -543,7 +536,7 @@ PrintBibliography(myBib)
 
 ---
 name: apendice1
-## Apêndice 1¹ .footnote[¹Clique no nome do grupo para ser redirecionado à sua página no Facebook.]
+## Apêndice 1
 
 **Grupos do Facebook onde foi feito a divulgação:**
 
@@ -586,8 +579,4 @@ name: apendice1
 
 ]
 
-<center>
-<form> 
- <input type="button" class="btn btn-primary" value="Voltar à página anterior!" onclick="history.back()">
-</form>
-</center>
+
