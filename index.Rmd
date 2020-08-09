@@ -353,11 +353,11 @@ porcentagem(base_limpa, idade) %>% arrange(desc(idade)) %>%
 #### População Brasileira 
 
 ```{r echo=FALSE, out.width="100%", include=TRUE}
-knitr::include_graphics("img/graficos_ibge/jovens_populacao_4_piramide_etaria_2barras.png")
+knitr::include_graphics("img/graficos_ibge/idade.JPG")
 ```
 
 
-Fonte: [IBGE, 2019](https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18318-piramide-etaria.html)
+Fonte: [IBGE, 2020](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101707_informativo.pdf)
 ]
 
 
